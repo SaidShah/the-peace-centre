@@ -1,0 +1,48 @@
+h1 {
+  color: #ffffff;
+  font-size: 5rem;
+}
+
+.current_date {
+  color: #e1c027;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.sunrise_container {
+   width: 10%; 
+   margin: auto 0;
+}
+
+.sunrise_icon {
+  width: 30%;
+}
+
+.sunrise_text {
+  font-weight: bold;
+}
+
+.sunrise_time {
+  font-weight: bolder; 
+  float: left; 
+  margin-top: 0
+}
+
+.masjid_name {
+  width: 75%;
+}
+
+.current_date {
+  margin: auto 0;
+}
+
+.current_time {
+  margin: 0;
+  line-height: 0
+}
