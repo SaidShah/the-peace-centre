@@ -11,8 +11,8 @@ h1 {
 
 .header {
   display: flex;
-  width: 100%;
   justify-content: center;
+  line-height: 0;
 }
 
 .sunrise_container {
@@ -31,18 +31,81 @@ h1 {
 .sunrise_time {
   font-weight: bolder; 
   float: left; 
-  margin-top: 0
 }
 
 .masjid_name {
-  width: 75%;
+  margin: 0;
 }
 
 .current_date {
-  margin: auto 0;
+  margin: 0;
 }
 
 .current_time {
-  margin: 0;
-  line-height: 0
+  width: 55%;
+  font-size: 6rem;
+}
+
+.image_text_container {
+  display: flex;
+}
+
+.prayer_time_dash {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem
+}
+
+.prayer_time_container {
+  flex: 1 1 calc(33.33% - 1rem);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem; /* Smaller font size for mobile */
+  }
+
+  .current_date {
+    font-size: 1rem; /* Adjust date font size */
+  }
+
+  .header {
+    flex-direction: column; /* Stack items vertically */
+    line-height: 1.5;
+  }
+
+  .sunrise_container {
+    width: 100%; /* Full width for mobile */
+    margin: 1rem 0;
+  }
+
+  .sunrise_icon {
+    width: 15%;
+  }
+
+  .sunrise_text {
+    font-size: 1rem; /* Adjust text size */
+    margin: 0;
+  }
+
+  .sunrise_time {
+    font-size: 1.2rem; /* Adjust time font size */
+    float: none;
+    margin: 0;
+  }
+
+  .current_time {
+    width: 100%; /* Full width for mobile */
+    font-size: 3rem; /* Smaller font size */
+    margin: 0;
+  }
+
+  .image_text_container {
+    display: block;
+  }
+
+  .masjid_name {
+    font-size: 2rem;
+  }
 }
