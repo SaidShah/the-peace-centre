@@ -21,16 +21,18 @@ h1 {
 }
 
 .sunrise_icon {
-  width: 30%;
+  width: 50%;
 }
 
 .sunrise_text {
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .sunrise_time {
   font-weight: bolder; 
   float: left; 
+  font-size: 1.5rem;
 }
 
 .masjid_name {
