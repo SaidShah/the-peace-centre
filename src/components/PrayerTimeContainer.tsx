@@ -20,15 +20,13 @@ const PrayerTimeContainer = ({prayerName, prayerTime}: {prayerName: string, pray
   }
 
   const addMinutes = (time: string, minutesToAdd: number) => {
-    // Split the time into hours and minutes, and parse them as numbers
+
     const [hours, minutes] = time.split(":").map((value) => parseInt(value, 10));
   
-    // Add minutes and calculate overflow
     const totalMinutes = minutes + minutesToAdd;
     const newHours = (hours + Math.floor(totalMinutes / 60)) % 24; // Handle hour overflow
     const newMinutes = totalMinutes % 60; // Remaining minutes after overflow
   
-    // Format the new time as HH:mm
     return `${String(newHours).padStart(2, "0")}:${String(newMinutes).padStart(2, "0")}`;
   };
 
@@ -47,6 +45,23 @@ const PrayerTimeContainer = ({prayerName, prayerTime}: {prayerName: string, pray
     }
   }
 
+  const timeOfDayIndicator = (prayerName: string) => {
+    switch (prayerName) {
+      case 'Fajr':
+        return "AM";
+      case 'Dhuhr':
+        return "PM";
+      case 'Asr':
+        return "PM";
+      case 'Maghrib':
+        return "PM";
+      case 'Isha':
+        return "PM";
+      case 'Jummah':
+        return "PM";
+    }
+  }
+
   return (
     <div className="outer_container">
       <div className="first_section">
@@ -58,11 +73,13 @@ const PrayerTimeContainer = ({prayerName, prayerTime}: {prayerName: string, pray
         <h2 className="arabic_name">{toArabic(prayerName)}</h2>
         {!prayerName.includes("Jummah") && <h2 className="prayer_time">{prayerTime}</h2>}
       </div>
-      <div>
+      <div className="second_section">
         { !prayerName.includes("Jummah") ?
-          <h2 className="iqama_time">{iqamaTimes(prayerTime, prayerName)}</h2>
+          <h2 className="iqama_time_jummah">{iqamaTimes(prayerTime, prayerName)}</h2>
           :
-          <h2 className="iqama_time">01:00</h2>}
+          <h2 className="iqama_time">01:00</h2>
+        }
+          <h2 className="time_of_day_indicator">{timeOfDayIndicator(prayerName)}</h2>
       </div>
     </div>
   )

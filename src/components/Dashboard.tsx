@@ -2,11 +2,14 @@ import "../styles/Dashboard.css";
 import sunrise from "../assets/sunrise.png";
 import sunset from "../assets/sunset.png";
 import PrayerTimeContainer from "./PrayerTimeContainer";
+import { useState } from "react";
 
 const Dashboard = ({
   adhanTimes,
+  currentTime,
 }: {
-  adhanTimes: { data?: { timings?: { [key: string]: string } } };
+  adhanTimes: { data?: { timings?: { [key: string]: string } } },
+  currentTime: Date;
 }) => {
   let timings = adhanTimes?.data?.timings;
   if (timings) {
@@ -14,13 +17,13 @@ const Dashboard = ({
   }
 
   const now = new Date();
-  const formattedDate = now.toLocaleDateString("en-US", {
+  const formattedDate = currentTime.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
   });
 
-  const currentTime = now.toLocaleTimeString("en-US", {
+  const currentTimeHere = currentTime.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
@@ -72,7 +75,7 @@ const Dashboard = ({
                 {sunrise12Hour.toUpperCase()}
               </p>
             </div>
-            <h1 className="current_time">{currentTime}</h1>
+            <h1 className="current_time">{currentTimeHere}</h1>
             <div className="sunrise_container">
               <div className="image_text_container">
                 <img

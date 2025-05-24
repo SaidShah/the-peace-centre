@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [adhanTimes, setAdhanTimes] = useState({})
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const fetchAdhanTimes = () => {
@@ -21,7 +22,11 @@ function App() {
         .catch((error) => console.error(error));
     };
 
-      const interval = setInterval(() => {
+    const timeInterval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60 * 1000); 
+
+      const fetchInterval = setInterval(() => {
         const now = new Date();
         const isSunday = now.getDay() === 0;
         const is1AM = now.getHours() === 1 && now.getMinutes() === 0;
@@ -33,14 +38,17 @@ function App() {
   
       fetchAdhanTimes();
   
-      return () => clearInterval(interval); // Cleanup interval on component unmount
+      return () => {
+        clearInterval(timeInterval); // Cleanup time interval
+        clearInterval(fetchInterval); // Cleanup fetch interval
+      };
     
   }, [])
 
   return (
     <>
       <div>
-        <Dashboard adhanTimes={adhanTimes} />
+        <Dashboard adhanTimes={adhanTimes} currentTime={currentTime}/>
       </div>
     </>
   )
