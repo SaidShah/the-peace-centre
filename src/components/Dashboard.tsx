@@ -2,7 +2,6 @@ import "../styles/Dashboard.css";
 import sunrise from "../assets/sunrise.png";
 import sunset from "../assets/sunset.png";
 import PrayerTimeContainer from "./PrayerTimeContainer";
-import { useState } from "react";
 
 const Dashboard = ({
   adhanTimes,
@@ -16,7 +15,6 @@ const Dashboard = ({
     timings = { ...timings, Jummah: "13:00" }; // 13:00 is 1:00 PM in 24-hour format
   }
 
-  const now = new Date();
   const formattedDate = currentTime.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
@@ -93,7 +91,7 @@ const Dashboard = ({
             </div>
           </div>
           <div className="prayer_time_dash">
-            {Object.entries(timings).map(([prayerName, time], index) => (
+            {Object.entries(timings).map(([prayerName, time]) => (
               <div
                 key={prayerName}
                 className="prayer_time_container"
