@@ -52,22 +52,28 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchFirebaseData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "salah"));
-        const data: any[] = [];
-        querySnapshot.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-        });
-        setIqamaData(data[0]);
-      } catch (error) {
-        console.error("Error fetching Firebase data:", error);
-      }
-    };
+useEffect(() => {
+  const fetchFirebaseData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "salah"));
+      const data: any[] = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      setIqamaData(data[0]);
+    } catch (error) {
+      console.error("Error fetching Firebase data:", error);
+    }
+  };
 
+  fetchFirebaseData(); 
+
+  const interval = setInterval(() => {
     fetchFirebaseData();
-  }, []);
+  }, 60 * 1000);
+
+  return () => clearInterval(interval); 
+}, []);
 
   return (
     <>
