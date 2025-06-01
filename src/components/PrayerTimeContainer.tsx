@@ -47,23 +47,34 @@ const PrayerTimeContainer = ({
     )}`;
   };
 
-  const iqamaTimes = (prayerTime: string, prayerName: string) => {
-    console.log("iqamaData", iqamaData);
-    switch (prayerName) {
-      case "Fajr":
+const iqamaTimes = (prayerTime: string, prayerName: string) => {
+  if (!iqamaData) return undefined;
+  switch (prayerName) {
+    case "Fajr":
+      if (typeof iqamaData["fajr"] === "number")
         return addMinutes(prayerTime, iqamaData["fajr"]);
-      case "Dhuhr":
+      break;
+    case "Dhuhr":
+      if (typeof iqamaData["dhuhr"] === "number")
         return addMinutes(prayerTime, iqamaData["dhuhr"]);
-      case "Asr":
+      break;
+    case "Asr":
+      if (typeof iqamaData["asr"] === "number")
         return addMinutes(prayerTime, iqamaData["asr"]);
-      case "Maghrib":
+      break;
+    case "Maghrib":
+      if (typeof iqamaData["maghrib"] === "number")
         return addMinutes(prayerTime, iqamaData["maghrib"]);
-      case "Isha":
+      break;
+    case "Isha":
+      if (typeof iqamaData["isha"] === "number")
         return addMinutes(prayerTime, iqamaData["isha"]);
-      case "Jummah":
-        return "01:00"; // Jummah iqama time is fixed at 1:00 PM
-    }
-  };
+      break;
+    case "Jummah":
+      return "01:00";
+  }
+  return undefined;
+};
 
   const timeOfDayIndicator = (prayerName: string) => {
     switch (prayerName) {
@@ -114,7 +125,7 @@ const PrayerTimeContainer = ({
   useEffect(() => {
     const iqamaTime = iqamaTimes(prayerTime, prayerName); // Get iqama time for the current prayer
     const dayOfWeek = getDayOfWeek(currentTime);
-
+console.log(iqamaTime, prayerName)
     if (iqamaTime) {
       if (
         prayerName !== "Jummah" ||
