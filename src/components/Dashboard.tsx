@@ -148,7 +148,10 @@ const Dashboard = ({
             ))}
           </div>
           {closestPrayer?.minutes == null ? (
-            <h2 className="next_prayer_minutes">Loading Minutes To Next Iqama Time...</h2>
+            <h2 className="next_prayer_minutes">
+              Loading Minutes To Next Iqama Time...
+              <span className="spinner" />
+            </h2>
           ) : (
             <h2 className="next_prayer_minutes">
               Next Iqama For:{" "}
