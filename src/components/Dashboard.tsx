@@ -25,14 +25,14 @@ const Dashboard = ({
   const [nextPrayerMinutes, setNextPrayerMinutes] = useState<{
     [key: string]: string;
   }>({});
-  const [closestPrayer, setClosestPrayer] = useState<{
+  const [, setClosestPrayer] = useState<{
     name: string;
     minutes: number;
   } | null>(null);
 
   let timings = adhanTimes?.data?.timings;
   if (timings) {
-    timings = { ...timings, Jummah: "13:00" }; // 13:00 is 1:00 PM in 24-hour format
+    timings = { ...timings }; // 13:00 is 1:00 PM in 24-hour format
   }
 
   const formattedDate = currentTime.toLocaleDateString("en-US", {
@@ -58,7 +58,7 @@ const Dashboard = ({
   const sunset12Hour = timings ? convertTo12HourFormat(timings.Sunset) : "";
 
   if (timings) {
-    timings = { ...timings, Jummah: "13:00" }; // Add Jummah
+    timings = { ...timings}; // Add Jummah
     const {
       Sunset,
       Sunrise,
@@ -71,22 +71,22 @@ const Dashboard = ({
     timings = filteredTimings;
   }
 
-  const toArabic = (prayerName: string) => {
-    switch (prayerName) {
-      case "Fajr":
-        return "الفجر";
-      case "Dhuhr":
-        return "الظهر";
-      case "Asr":
-        return "العصر";
-      case "Maghrib":
-        return "المغرب";
-      case "Isha":
-        return "العشاء";
-      case "Jummah":
-        return "جمعة";
-    }
-  };
+  // const toArabic = (prayerName: string) => {
+  //   switch (prayerName) {
+  //     case "Fajr":
+  //       return "الفجر";
+  //     case "Dhuhr":
+  //       return "الظهر";
+  //     case "Asr":
+  //       return "العصر";
+  //     case "Maghrib":
+  //       return "المغرب";
+  //     case "Isha":
+  //       return "العشاء";
+  //     case "Jummah":
+  //       return "جمعة";
+  //   }
+  // };
 
   useEffect(() => {
     // Find the closest prayer
@@ -113,7 +113,7 @@ const Dashboard = ({
       {timings ? (
         <div>
           <div>
-            <h1 className="masjid_name">MASJID ASSAKINA</h1>
+            {/* <h1 className="masjid_name">MASJID ASSAKINA</h1> */}
             <p className="current_date">{formattedDate.toUpperCase()}</p>
           </div>
 
@@ -147,7 +147,7 @@ const Dashboard = ({
               </div>
             ))}
           </div>
-          {closestPrayer?.minutes == null ? (
+          {/* {closestPrayer?.minutes == null ? (
             <h2 className="next_prayer_minutes">
               Loading Minutes To Next Iqama Time...
               <span className="spinner" />
@@ -163,7 +163,7 @@ const Dashboard = ({
               <span className="next_prayer_span">{closestPrayer?.minutes}</span>{" "}
               minutes
             </h2>
-          )}
+          )} */}
         </div>
       ) : (
         <p>Loading prayer times...</p>

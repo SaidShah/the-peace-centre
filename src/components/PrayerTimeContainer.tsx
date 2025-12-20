@@ -32,12 +32,12 @@ const PrayerTimeContainer = ({
     }
   };
 
-  const addMinutes = (time: string, minutesToAdd: number) => {
+  const addMinutes = (time: string) => {
     const [hours, minutes] = time
       .split(":")
       .map((value) => parseInt(value, 10));
 
-    const totalMinutes = minutes + minutesToAdd;
+    const totalMinutes = minutes + 0;
     const newHours = (hours + Math.floor(totalMinutes / 60)) % 24; // Handle hour overflow
     const newMinutes = totalMinutes % 60; // Remaining minutes after overflow
 
@@ -52,23 +52,23 @@ const iqamaTimes = (prayerTime: string, prayerName: string) => {
   switch (prayerName) {
     case "Fajr":
       if (typeof iqamaData["fajr"] === "number")
-        return addMinutes(prayerTime, iqamaData["fajr"]);
+        return addMinutes(prayerTime);
       break;
     case "Dhuhr":
       if (typeof iqamaData["dhuhr"] === "number")
-        return addMinutes(prayerTime, iqamaData["dhuhr"]);
+        return addMinutes(prayerTime);
       break;
     case "Asr":
       if (typeof iqamaData["asr"] === "number")
-        return addMinutes(prayerTime, iqamaData["asr"]);
+        return addMinutes(prayerTime);
       break;
     case "Maghrib":
       if (typeof iqamaData["maghrib"] === "number")
-        return addMinutes(prayerTime, iqamaData["maghrib"]);
+        return addMinutes(prayerTime);
       break;
     case "Isha":
       if (typeof iqamaData["isha"] === "number")
-        return addMinutes(prayerTime, iqamaData["isha"]);
+        return addMinutes(prayerTime);
       break;
     case "Jummah":
       return "01:00";
@@ -149,14 +149,14 @@ console.log(iqamaTime, prayerName)
     <div className="outer_container">
       <div className="first_section">
         {prayerName.includes("Maghrib") ? (
-          <h2 className="prayer_name">MAGH</h2>
+          <h2 className="prayer_name">MAGHRIB</h2>
         ) : (
           <h2 className="prayer_name">{prayerName.toUpperCase()}</h2>
         )}
         <h2 className="arabic_name">{toArabic(prayerName)}</h2>
-        {!prayerName.includes("Jummah") && (
+        {/* {!prayerName.includes("Jummah") && (
           <h2 className="prayer_time">{prayerTime}</h2>
-        )}
+        )} */}
       </div>
       <div className="second_section">
         {!prayerName.includes("Jummah") ? (

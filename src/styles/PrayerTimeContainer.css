@@ -1,7 +1,7 @@
 .outer_container {
   border-bottom: 3px solid #ccc;
   border-right: 3px solid #ccc;
-  padding: 1rem;
+  padding: .7rem 1rem;
 }
 
 .first_section {
@@ -17,11 +17,11 @@
 
 .prayer_name {
   /* padding-right: 5rem; */
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .arabic_name {
-  font-size: 3rem;
+  font-size: 5rem;
   /* padding-right: 1rem; */
 }
 
