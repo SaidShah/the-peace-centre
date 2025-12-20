@@ -1,0 +1,102 @@
+.outer_container {
+  border-bottom: 3px solid #ccc;
+  border-right: 3px solid #ccc;
+  padding: .7rem 1rem;
+}
+
+.first_section {
+  display: flex;
+  /* padding: 1rem; */
+  justify-content: space-evenly;
+}
+
+.second_section {
+  display: flex;
+  justify-content: center;
+}
+
+.prayer_name {
+  /* padding-right: 5rem; */
+  font-size: 5rem;
+}
+
+.arabic_name {
+  font-size: 5rem;
+  /* padding-right: 1rem; */
+}
+
+.prayer_time {
+  font-size: 3rem;
+  color: #e1c027;
+}
+
+.iqama_time {
+  font-size: 10rem;
+  margin: 0;
+  color: #19ebfe;
+  line-height: 1;
+}
+
+.iqama_time_jummah {
+  font-size: 10rem;
+  margin: 0;
+  color: #e1c027;
+  line-height: 1;
+}
+
+.time_of_day_indicator {
+  font-size: 4rem;
+  max-width: 12%;
+  word-wrap: break-word;
+  line-height: 1;
+  margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .outer_container {
+    padding: 0.5rem; /* Reduce padding for smaller screens */
+  }
+
+  .first_section {
+    display: flex;
+    justify-content: space-evenly;;
+    padding: 0.5rem;
+  }
+
+  .second_section {
+    display: flex;
+  }
+
+  .prayer_name {
+    padding-right: 0;
+    font-size: 1.5rem; /* Reduce font size */
+    text-align: center; /* Center align text */
+  }
+
+  .arabic_name {
+    font-size: 1.5rem; /* Reduce font size */
+    padding-right: 0;
+    text-align: center; /* Center align text */
+  }
+
+  .prayer_time {
+    font-size: 1.5rem; /* Reduce font size */
+    text-align: center; /* Center align text */
+  }
+
+  .iqama_time {
+    font-size: 5rem; /* Reduce font size */
+  }
+
+  .iqama_time_jummah {
+    font-size: 5rem; /* Reduce font size */
+  }
+
+  .time_of_day_indicator {
+    word-wrap: break-word;
+    font-size: 2rem;
+    max-width: 15%;
+    line-height: 1;
+    margin: auto 0;
+  }
+}
