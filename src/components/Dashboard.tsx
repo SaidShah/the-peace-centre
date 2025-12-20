@@ -107,7 +107,7 @@ const Dashboard = ({
       }
     }
   }, [nextPrayerMinutes]);
-
+console.log(adhanTimes)
   return (
     <div>
       {timings ? (

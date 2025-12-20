@@ -1,8 +1,6 @@
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import { useState, useEffect } from "react";
-import { db } from "./js/firebase";
-import { collection, getDocs } from "firebase/firestore";
 
 function App() {
   const [adhanTimes, setAdhanTimes] = useState({});
@@ -55,12 +53,15 @@ function App() {
 useEffect(() => {
   const fetchFirebaseData = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "salah"));
-      const data: any[] = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
-      setIqamaData(data[0]);
+      const iqData = {
+        is_manual_iqama: false,
+        fajr: 0,
+        dhuhr: 0,
+        asr: 0,
+        maghrib: 0,
+        isha: 0,
+      };
+      setIqamaData(iqData);
     } catch (error) {
       console.error("Error fetching Firebase data:", error);
     }
